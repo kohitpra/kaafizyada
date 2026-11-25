@@ -15,7 +15,10 @@ const kalam = Kalam({ weight: ["400", "700"], subsets: ["latin", "devanagari"], 
 const instrument = Instrument_Sans({ subsets: ["latin"], variable: "--ff-instrument", display: "swap" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3200"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ||
+      (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3200"),
+  ),
   title: { default: "KAAFIZYADA · Desi with a little extra", template: "%s · KAAFIZYADA" },
   description: "Illustrated Indian street fashion. Halters, cargos, bandhani and brass, from the gully to your wardrobe.",
   icons: { icon: "/assets/brand/monogram.svg" },
