@@ -1,0 +1,11 @@
+.form { display: flex; flex-wrap: wrap; gap: 10px; max-width: 520px; }
+.form input {
+  flex: 1 1 220px; min-width: 0; min-height: 50px; padding: 0 16px;
+  border: 2px solid var(--ink); background: var(--cream); color: var(--ink); border-radius: 0; font-size: 1rem;
+}
+.form[data-tone="dark"] input { border-color: var(--cream); background: transparent; color: var(--cream); }
+.form[data-tone="dark"] input::placeholder { color: rgba(251, 252, 235, 0.6); }
+.form[data-tone="dark"] :global(.btn) { --bg: var(--cream); --fg: var(--ink); border-color: var(--cream); box-shadow: 3px 3px 0 var(--jaipur-pink); }
+.err { flex-basis: 100%; font-size: var(--fs-small); font-weight: 600; }
+.done { font-size: 1.5rem; }
+.done[data-tone="dark"] { color: var(--turmeric); }

@@ -1,0 +1,18 @@
+.page { padding-bottom: 96px; }
+.hero { padding: clamp(48px, 8vw, 120px) var(--gutter) 40px; display: grid; gap: 12px; }
+.hero h1 { font-size: var(--fs-mega); line-height: 0.88; max-width: 10ch; }
+.hero h1 span { color: var(--cherry); }
+.note { color: var(--jaipur-pink); font-size: 1.5rem; }
+.chapter { display: grid; gap: 24px; align-items: center; padding: 40px 0; border-top: 2px solid var(--ink); }
+@media (min-width: 900px) {
+  .chapter { grid-template-columns: 1fr 1fr; gap: 64px; padding: 72px 0; }
+  .chapter[data-flip] .art { order: 2; }
+}
+.art { position: relative; aspect-ratio: 4 / 5; border: 3px solid var(--ink); box-shadow: 8px 8px 0 var(--ink); overflow: hidden; }
+.art img { object-fit: cover; }
+.text { display: grid; gap: 14px; }
+.no { font-family: var(--font-poster); font-size: 4rem; color: var(--turmeric); -webkit-text-stroke: 2px var(--ink); line-height: 1; }
+.text h2 { font-size: var(--fs-2); line-height: 1.05; }
+.text p { font-size: 1.1rem; max-width: 46ch; color: var(--ink-soft); }
+.end { display: grid; justify-items: start; gap: 20px; padding-top: 48px; border-top: 2px solid var(--ink); }
+.end :global(.poster) { font-size: var(--fs-1); color: var(--cherry); }

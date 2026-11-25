@@ -1,0 +1,9 @@
+.root { background: var(--jaipur-pink); color: var(--ink); padding: clamp(64px, 8vw, 110px) 0; overflow: hidden; border-top: 3px solid var(--ink); }
+.inner { display: grid; gap: 12px; align-items: center; }
+@media (min-width: 900px) { .inner { grid-template-columns: 1.1fr 0.9fr; } }
+.kicker { font-size: 1.4rem; color: var(--cream); transform: rotate(-2deg); display: inline-block; text-shadow: 1px 1px 0 var(--ink); }
+.copy h2 { font-size: var(--fs-mega); line-height: 0.88; margin: 6px 0 14px; }
+.intro { font-size: var(--fs-3); max-width: 28ch; margin-bottom: 22px; font-weight: 500; }
+.small { font-size: var(--fs-micro); margin-top: 10px; }
+.glass { height: clamp(320px, 42vw, 560px); position: relative; }
+.glass[data-failed] { display: none; }

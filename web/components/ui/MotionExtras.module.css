@@ -1,0 +1,15 @@
+.cursor { position: fixed; left: 0; top: 0; z-index: 860; pointer-events: none; display: flex; align-items: center; justify-content: center; }
+.card {
+  position: absolute; display: flex; overflow: hidden; width: 10.5rem;
+  background: var(--turmeric); color: var(--ink); border: 2px solid var(--ink); box-shadow: 3px 3px 0 var(--ink);
+  transform: scale(0) rotate(-6deg); transition: transform 400ms var(--ease-in-out);
+}
+.cursor[data-on] .card { transform: scale(1) rotate(-4deg); }
+.text {
+  font-family: var(--font-poster); text-transform: uppercase; white-space: nowrap;
+  padding: 0.4em 0.35em 0.3em; font-size: 1.15rem;
+  animation: cm var(--dur, 2s) linear infinite; animation-play-state: paused;
+}
+.cursor[data-on] .text { animation-play-state: running; }
+.dup { position: absolute; left: 100%; }
+@keyframes cm { to { transform: translateX(-100%); } }

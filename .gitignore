@@ -1,0 +1,20 @@
+# dependencies / builds
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+.vercel/
+
+# secrets
+.env
+.env*.local
+
+# local-only material (client brief, screen recordings, editor state)
+references/
+*.mov
+.claude/
+.DS_Store
+
+# internal working notes (mention unrelated accounts)
+PROJECT_AUDIT.md

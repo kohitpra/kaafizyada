@@ -1,0 +1,81 @@
+.footer {
+  position: relative;
+  background: var(--cherry);
+  color: var(--cream);
+  padding-top: 72px;
+  margin-top: 0;
+  overflow: hidden;
+}
+.tear {
+  position: absolute; top: -1px; left: 0; right: 0; height: 26px;
+  background: var(--cream);
+  -webkit-mask: url("/assets/textures/tear.svg") bottom / 100% 100% no-repeat;
+  mask: url("/assets/textures/tear.svg") bottom / 100% 100% no-repeat;
+}
+.top {
+  display: grid;
+  gap: 48px;
+  padding-bottom: 32px;
+}
+@media (min-width: 900px) {
+  .top { grid-template-columns: 1.1fr 1fr; align-items: start; }
+}
+.join :global(.hand) { font-size: 1.8rem; color: var(--turmeric); }
+.joinIntro { margin: 6px 0 16px; max-width: 34ch; }
+.cols { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+@media (min-width: 640px) { .cols { grid-template-columns: repeat(3, 1fr); } }
+.cols h2 { color: var(--jaipur-pink); margin-bottom: 12px; }
+.cols ul { display: grid; gap: 8px; }
+.cols a { text-decoration: none; opacity: 0.9; }
+.cols a:hover { text-decoration: underline; text-decoration-color: var(--turmeric); text-underline-offset: 4px; opacity: 1; }
+
+/* ---------- hanging signboard ---------- */
+.signWrap { position: relative; padding: 0 var(--gutter); margin-top: 24px; }
+.ropes { width: 100%; height: 70px; display: block; }
+.board {
+  --w: min(100%, 1360px);
+  width: var(--w);
+  margin: -2px auto 0;
+  display: flex; justify-content: space-between;
+  padding: clamp(8px, 1.5vw, 20px) clamp(12px, 2.5vw, 36px);
+  background: var(--cherry-deep);
+  border: 3px solid var(--ink);
+  box-shadow: inset 0 0 0 6px var(--cherry-deep), inset 0 0 0 8px var(--brass), 0 18px 0 -6px rgba(0, 0, 0, 0.25);
+  transform-origin: 50% -70px;
+  transform: rotate(-4deg) translateY(-30px);
+  opacity: 0;
+  transition: transform 1400ms cubic-bezier(0.3, 1.6, 0.5, 1), opacity 500ms;
+}
+.in .board { transform: rotate(0deg); opacity: 1; }
+.in .board:hover { animation: sway 1.6s ease-in-out; }
+@keyframes sway {
+  25% { transform: rotate(1.2deg); }
+  60% { transform: rotate(-0.8deg); }
+}
+.letter {
+  font-size: clamp(3.4rem, 16vw, 15rem);
+  line-height: 0.95;
+  color: var(--cream);
+  display: inline-block;
+  transition: transform 300ms var(--ease-snap), color 200ms;
+  text-shadow: 3px 3px 0 var(--ink);
+}
+.letter:hover { color: var(--c); transform: translateY(-10%) rotate(-4deg); }
+.in .letter { animation: bulb 900ms var(--d) both; }
+@keyframes bulb {
+  0% { color: var(--cream); }
+  40% { color: var(--c); }
+  100% { color: var(--cream); }
+}
+
+.bottom {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px;
+  padding-top: 28px; padding-bottom: 28px; font-size: var(--fs-small);
+  border-top: 1px solid rgba(181, 154, 109, 0.5);
+  margin-top: 40px;
+}
+.stamp { width: 34px; height: 34px; color: var(--cream); }
+.made { margin-left: auto; font-family: var(--font-hand); color: var(--jaipur-pink); font-size: 1rem; }
+@media (prefers-reduced-motion: reduce) {
+  .board { transform: none; opacity: 1; }
+}

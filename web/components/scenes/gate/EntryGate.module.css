@@ -1,0 +1,53 @@
+.gate {
+  position: fixed; inset: 0; z-index: 950;
+  background: var(--paper);
+  transition: opacity 700ms var(--ease-in-out);
+}
+.gate[data-phase="leaving"] { opacity: 0; pointer-events: none; }
+.canvas { position: absolute; inset: 0; }
+.gate[data-hover] .canvas { cursor: pointer; }
+
+.loader {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  color: var(--ink-soft); font-size: 1.4rem;
+  transition: opacity 500ms var(--ease-out);
+  pointer-events: none;
+}
+.gate:not([data-phase="loading"]):not([data-phase="check"]) .loader { opacity: 0; }
+.loader span { animation: bob 1.2s ease-in-out infinite alternate; }
+@keyframes bob { to { transform: translateY(-6px); } }
+
+.copy {
+  position: absolute; left: 0; right: 0; bottom: max(24px, env(safe-area-inset-bottom));
+  display: grid; justify-items: center; gap: 10px; text-align: center;
+  padding: 0 var(--gutter, 20px);
+  pointer-events: none;
+  transition: opacity 500ms var(--ease-out), transform 700ms var(--ease-out);
+}
+.copy > * { pointer-events: auto; }
+.gate[data-phase="loading"] .copy,
+.gate[data-phase="check"] .copy { opacity: 0; transform: translateY(16px); }
+.gate[data-phase="entering"] .copy,
+.gate[data-phase="leaving"] .copy { opacity: 0; transform: translateY(24px); pointer-events: none; }
+.gate[data-phase="entering"] .copy > *,
+.gate[data-phase="leaving"] .copy > * { pointer-events: none; }
+
+.knock {
+  font-size: clamp(2.4rem, 6vw, 4.6rem); line-height: 0.9; color: var(--cherry);
+  text-shadow: 3px 3px 0 var(--turmeric);
+}
+.hint { font-size: 1.25rem; color: var(--ink); }
+.gate[data-hover] .hint { color: var(--cherry); }
+
+.skip {
+  position: absolute; top: max(16px, env(safe-area-inset-top)); right: 16px;
+  background: none; border: 0; padding: 10px 12px; min-height: 44px;
+  font-size: var(--fs-small); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--ink); text-decoration: underline; text-underline-offset: 4px;
+}
+.gate[data-phase="entering"] .skip { opacity: 0; pointer-events: none; }
+
+@media (max-width: 640px) {
+  .knock { font-size: 2.6rem; }
+  .hint { font-size: 1.1rem; }
+}

@@ -1,0 +1,12 @@
+.wrap { position: relative; overflow: hidden; --r: 0%; transition: --r 900ms var(--ease-out); }
+.wrap img { object-fit: cover; }
+.ink { filter: grayscale(1) contrast(1.22) brightness(1.06) sepia(0.12); }
+.colour {
+  -webkit-mask-image: radial-gradient(circle at var(--mx) var(--my), #000 calc(var(--r) * 0.62), transparent var(--r));
+  mask-image: radial-gradient(circle at var(--mx) var(--my), #000 calc(var(--r) * 0.62), transparent var(--r));
+}
+.wrap[data-on], .wrap[data-forced] { --r: 165%; }
+:global(a:focus-visible) .wrap { --r: 165%; }
+@media (prefers-reduced-motion: reduce) {
+  .ink { filter: none; }
+}
