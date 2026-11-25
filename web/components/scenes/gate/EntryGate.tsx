@@ -10,6 +10,7 @@ import s from "./EntryGate.module.css";
 const GateScene = dynamic(() => import("./GateScene"), { ssr: false });
 
 const SEEN = "kz-gate-seen";
+const GATE_TEXTURES = ["/assets/gate/facade.webp", "/assets/gate/door-left.webp", "/assets/gate/door-right.webp", "/assets/gate/street.webp"];
 
 /**
  * Full-screen entrance shown once per session on the home page. Knock (click/tap the doors, press
@@ -35,6 +36,12 @@ export function EntryGate() {
       return;
     }
     setTouch(window.matchMedia("(hover: none)").matches);
+    // start the texture downloads now, in parallel with the 3D code chunk
+    GATE_TEXTURES.forEach((src) => {
+      const img = new Image();
+      img.decoding = "async";
+      img.src = src;
+    });
     setPhase("loading");
     setScrollLocked(true);
     window.scrollTo(0, 0);
